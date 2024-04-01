@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { FaFileUpload, FaSave, FaPlay, FaFolderOpen } from "react-icons/fa";
+import ModelSelector from "../components/ModelSelector";
 
 const Index = () => {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedModel, setSelectedModel] = useState(null);
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -35,6 +37,14 @@ const Index = () => {
           </label>
         </div>
       </div>
+
+      <div className="mb-4">
+        <label className="block mb-2 text-sm font-medium text-gray-900">Select starting model</label>
+        <ModelSelector selectedModel={selectedModel} setSelectedModel={setSelectedModel} />
+        {selectedModel && <p className="mt-2">Selected model: {selectedModel}</p>}
+      </div>
+
+      {}
 
       <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-flex items-center mb-4" onClick={handleTrainModel}>
         <FaPlay className="mr-2" /> Train Model
